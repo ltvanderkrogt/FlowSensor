@@ -1,14 +1,30 @@
 # FlowSensor Hall
+![image](https://user-images.githubusercontent.com/22962761/227800415-23c39647-59c9-4e5a-aeb2-49695b94c130.png)
 
-wiring
-Wemos D1 
+## Specification:<BR>
+Function: Sensor, flow control<BR>
+Thread size: Male 1"<BR>
+Size: 58mm L<BR>
+Color: Gold color<BR>
+Flow Rate:2~50L/min<BR>
+Flow Pulse: (6 * Q-8) Q = L/Min ± 5%<BR>
+max. Working Current: 15mA (DC5V)<BR>
+Min. Operating: DC 5V<BR>
+Working voltage: DC7v-24v<BR>
+Charging power: = 10 mA (DC 5 V)<BR>
+Operational Working Temperature: -25 degrees celsius to +60 degrees celsius <BR>
+Liquid Temperature: 60<BR>
+Accuracy: 5% ~ 10%<BR>
+Pressure: > 1.75MPa<BR>
+
+## wiring Wemos D1 
 
 Red = 5V<BR>
 Yellow = PIN D5<BR>
 Black = GND 
 
+## Calibration table;<BR>
+![image](https://user-images.githubusercontent.com/22962761/227793825-2f77f0cd-0c0f-4593-92d3-7e653d62471d.png)
 
-Output; 
+Output; <BR>
 Flow rate: 21.76 L/min
-
-![yf-b10-water-flow-sensor-brass-g1-600x600](https://user-images.githubusercontent.com/22962761/227790108-a83cb283-5ee0-4b48-8573-38dfa846b919.jpeg)
