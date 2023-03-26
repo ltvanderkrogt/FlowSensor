@@ -1,4 +1,4 @@
-# FlowSensor Hall
+# FlowSensor Hall YF-B3 YF-B10
 ![image](https://user-images.githubusercontent.com/22962761/227800415-23c39647-59c9-4e5a-aeb2-49695b94c130.png)
 
 ## Specification:<BR>
