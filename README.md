@@ -1,5 +1,12 @@
 # FlowSensor Hall
 
+wiring
+Wemos D1 
+
+Red = 5V<BR>
+Yellow = PIN D5<BR>
+Black = GND 
+
 
 Output; 
 Flow rate: 21.76 L/min
