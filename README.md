@@ -1,4 +1,4 @@
-# FlowSensor Hall YF-B3 YF-B10
+# FlowSensor Hall YF-B10 (YF-B1, YF-B2, YF-B3)
 ![image](https://user-images.githubusercontent.com/22962761/227800415-23c39647-59c9-4e5a-aeb2-49695b94c130.png)
 
 ## Specification:<BR>
@@ -28,3 +28,4 @@ Black = GND
 
 Output; <BR>
 Flow rate: 21.76 L/min
+![IMG_7923](https://user-images.githubusercontent.com/22962761/227914313-4c7c2146-8899-48ad-82be-d5e264e2a416.JPG)
