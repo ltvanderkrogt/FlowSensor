@@ -30,6 +30,9 @@ Black = GND
 
 ## Calibration table;<BR>
 ![image](https://user-images.githubusercontent.com/22962761/227793825-2f77f0cd-0c0f-4593-92d3-7e653d62471d.png)
+  I used this meter fr calibration. Below 2 liter/minute it is not reliable anymore. <BR>
+![image](https://user-images.githubusercontent.com/22962761/228352849-9684f77f-642e-47b4-8d5d-841d8826be43.png)
+
 
 Output; <BR>
 Flow rate: 21.76 L/min
