@@ -18,6 +18,11 @@ Accuracy: 5% ~ 10%<BR>
 Pressure: > 1.75MPa<BR>
 
 ## wiring Wemos D1 
+  
+The pins D5, D6, D7 work without restrictions<BR>
+D3 and D4 work, but can not be low on boot, otherwise the WEMOS freezes12<BR>
+D1 and D2 are used for I²C by default3, not changed for compability<BR>
+D04 and D85 have no support for interrupts<BR>
 
 Red = 5V<BR>
 Yellow = PIN D5<BR>
