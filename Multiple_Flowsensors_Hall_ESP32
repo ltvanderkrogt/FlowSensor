@@ -1,0 +1,96 @@
+// based on: https://lastminuteengineers.com/handling-esp8266-gpio-interrupts-tutorial/?utm_content=cmp-true
+// improved by: https://chat.openai.com/chat 
+// source: https://github.com/ltvanderkrogt/FlowSensor 
+
+struct FlowMeter {
+  const uint8_t PIN;
+  float pulsesPerLitre;
+  float flowRate;
+  unsigned int flowArray[100];
+  unsigned int flowIndex;
+};
+
+FlowMeter flowMeter1 = {2, 7.7, 0.0, {0}, 0}; // 7,7 pulses per liter 
+FlowMeter flowMeter2 = {3, 7.7, 0.0, {0}, 0}; // 7,7 pulses per liter
+FlowMeter flowMeter3 = {4, 7.7, 0.0, {0}, 0}; // 7,7 pulses per liter
+
+//variables to keep track of the timing of recent interrupts
+unsigned long trigger_time1 = 0;
+unsigned long last_trigger_time1 = 0;
+unsigned long trigger_time2 = 0;
+unsigned long last_trigger_time2 = 0;
+unsigned long trigger_time3 = 0;
+unsigned long last_trigger_time3 = 0;
+
+void ICACHE_RAM_ATTR isr1() {
+  trigger_time1 = micros();
+  if (trigger_time1 - last_trigger_time1 >= 1000)
+  {
+    flowMeter1.flowArray[flowMeter1.flowIndex++] = trigger_time1 - last_trigger_time1;
+    if (flowMeter1.flowIndex >= 100) {
+      flowMeter1.flowIndex = 0;
+    }
+    last_trigger_time1 = trigger_time1;
+  }
+}
+
+void ICACHE_RAM_ATTR isr2() {
+  trigger_time2 = micros();
+  if (trigger_time2 - last_trigger_time2 >= 1000)
+  {
+    flowMeter2.flowArray[flowMeter2.flowIndex++] = trigger_time2 - last_trigger_time2;
+    if (flowMeter2.flowIndex >= 100) {
+      flowMeter2.flowIndex = 0;
+    }
+    last_trigger_time2 = trigger_time2;
+  }
+}
+
+void ICACHE_RAM_ATTR isr3() {
+  trigger_time3 = micros();
+  if (trigger_time3 - last_trigger_time3 >= 1000)
+  {
+    flowMeter3.flowArray[flowMeter3.flowIndex++] = trigger_time3 - last_trigger_time3;
+    if (flowMeter3.flowIndex >= 100) {
+      flowMeter3.flowIndex = 0;
+    }
+    last_trigger_time3 = trigger_time3;
+  }
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(flowMeter1.PIN, INPUT_PULLUP);
+  pinMode(flowMeter2.PIN, INPUT_PULLUP);
+  pinMode(flowMeter3.PIN, INPUT_PULLUP);
+  attachInterrupt(flowMeter1.PIN, isr1, FALLING);
+  attachInterrupt(flowMeter2.PIN, isr2, FALLING);
+  attachInterrupt(flowMeter3.PIN, isr3, FALLING);
+}
+   
+void loop() {
+  float totalTime1 = 0.0;
+  float totalTime2 = 0.0;
+  float totalTime3 = 0.0;
+  for (int i = 0; i < 100; i++) {
+    totalTime1 += flowMeter1.flowArray[i];
+    totalTime2 += flowMeter2.flowArray[i];
+    totalTime3 += flowMeter3.flowArray[i];
+  }
+  float averageTime1 = totalTime1 / 100.0;
+  float averageFrequency1 = 1000000.0 / averageTime1;
+  flowMeter1.flowRate = averageFrequency1 / flowMeter1.pulsesPerLitre;
+
+  float averageTime2 = totalTime2 / 100.0;
+  float averageFrequency2 = 1000000.0 / averageTime2;
+  flowMeter2.flowRate = averageFrequency2 / flowMeter2.pulsesPerLitre;
+
+  float averageTime3 = totalTime3 / 100.0;
+  float averageFrequency3 = 1000000.0 / averageTime3;
+  flowMeter3.flowRate = averageFrequency3 / flowMeter3.pulsesPerLitre;
+
+  Serial.printf("Flow rate 1: %.2f L/min\n", flowMeter1.flowRate);
+  Serial.printf("Flow rate 2: %.2f L/min\n", flowMeter2.flowRate);
+  Serial.printf("Flow rate 3: %.2f L/min\n", flowMeter3.flowRate);
+  delay(3000);
+}
