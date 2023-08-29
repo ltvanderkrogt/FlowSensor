@@ -42,5 +42,6 @@ void loop() {
   float averageTime = totalTime / 100.0;
   float averageFrequency = 1000000.0 / averageTime;
   flowMeter.flowRate = averageFrequency / flowMeter.pulsesPerLitre;
-  Serial.printf("Flow rate: %.2f L/min\n", flowMeter.flowRate);
+  //  Serial.printf("Flow rate: %.2f L/min\n", flowMeter.flowRate);
+  Serial.printf("Flow rate: %.2f puls/min\n", averageFrequency);
 }
