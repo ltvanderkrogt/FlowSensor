@@ -31,7 +31,9 @@ Black = GND <BR>
 ## Calibration table;<BR>
 <img src="https://user-images.githubusercontent.com/22962761/227793825-2f77f0cd-0c0f-4593-92d3-7e653d62471d.png" width=50% height=50%>
   I used this meter for calibration. Below 2 liter/minute it is not reliable anymore. <BR>
+  For the YF-B1(DN15) you can use the same factor(7.7)  <BR>
 <img src="https://user-images.githubusercontent.com/22962761/228352849-9684f77f-642e-47b4-8d5d-841d8826be43.png" width=25% height=25%>
+
 
 
 Output; <BR>
